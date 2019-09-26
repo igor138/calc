@@ -1,6 +1,11 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+
+type Props = {
+  label: string,
+  clickHandler: () => void,
+};
 
 const style = StyleSheet.create({
   button: {
@@ -16,24 +21,12 @@ const style = StyleSheet.create({
   },
 });
 
-const ButtonComponent = ({ label, size, clickHandler }) => {
-  const customStyle = size && {
-    flex: size,
-  };
-
-  return (
-    <TouchableOpacity onPress={clickHandler} style={[style.button, customStyle]}>
-      <Text style={style.label}>
-        {label}
-      </Text>
-    </TouchableOpacity>
-  );
-};
-
-ButtonComponent.propTypes = {
-  label: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  clickHandler: PropTypes.func,
-};
+const ButtonComponent = ({ label, clickHandler }: Props) => (
+  <TouchableOpacity onPress={clickHandler} style={[style.button]}>
+    <Text style={style.label}>
+      {label}
+    </Text>
+  </TouchableOpacity>
+);
 
 export default ButtonComponent;

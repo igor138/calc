@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Keyboard from './Keyboard';
@@ -10,7 +11,18 @@ const style = StyleSheet.create({
   },
 });
 
-class Calculator extends Component {
+type Props = {};
+
+type State = {
+  displayValue: string,
+  minus: bool,
+  dotIsSet: bool,
+  operator: ?string,
+  result: number,
+  error: bool
+};
+
+class Calculator extends Component <Props, State> {
   constructor() {
     super();
     this.state = {
@@ -23,7 +35,7 @@ class Calculator extends Component {
     };
   }
 
-  formatDisplayedValue = displayValue => {
+  formatDisplayedValue = (displayValue: string) => {
     const maxDigits = 8;
     const dotPosition = displayValue.indexOf('.');
 
@@ -40,7 +52,7 @@ class Calculator extends Component {
     return displayValue;
   }
 
-  addDigit = digit => {
+  addDigit = (digit: string): ?string => {
     let { displayValue, dotIsSet } = this.state;
 
     if (digit === '.') {
@@ -102,13 +114,13 @@ class Calculator extends Component {
     }
   }
 
-  setOperator = operator => {
+  setOperator = (operator: string) => {
     const result = this.getValueFromDisplay();
     this.setState({ operator, result });
     this.clear();
   }
 
-  getValueFromDisplay = () => {
+  getValueFromDisplay = (): number => {
     const { displayValue, minus } = this.state;
     return parseFloat(displayValue) * (minus ? -1 : 1);
   }
@@ -145,7 +157,7 @@ class Calculator extends Component {
 
     operator = null;
     const minus = result < 0;
-    let displayValue = (result > 0) ? result.toString() : -result.toString();
+    let displayValue = (result > 0) ? result.toString() : (-result).toString();
     displayValue = this.formatDisplayedValue(displayValue);
 
     if (displayValue) {

@@ -1,7 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import Button from '../components/Button';
+
+type Props = {
+  addDigit: (digit :string) => void,
+  invertSign: () => void,
+  clear: () => void,
+  removeDigit: () => void,
+  calculate: () => void,
+  setOperator: () => void,
+  clearEverything: () => void,
+};
 
 const style = StyleSheet.create({
   keyboard: {
@@ -15,7 +24,7 @@ const style = StyleSheet.create({
   },
 });
 
-const Keyboard = ({ addDigit, invertSign, clear, removeDigit, calculate, setOperator, clearEverything }) => (
+const Keyboard = ({ addDigit, invertSign, clear, removeDigit, calculate, setOperator, clearEverything }: Props) => (
   <View style={style.keyboard}>
     <View style={style.column}>
       <Button label="C" clickHandler={clear} />
@@ -47,15 +56,5 @@ const Keyboard = ({ addDigit, invertSign, clear, removeDigit, calculate, setOper
     </View>
   </View>
 );
-
-Keyboard.propTypes = {
-  addDigit: PropTypes.func.isRequired,
-  invertSign: PropTypes.func.isRequired,
-  clear: PropTypes.func.isRequired,
-  removeDigit: PropTypes.func.isRequired,
-  calculate: PropTypes.func.isRequired,
-  setOperator: PropTypes.func.isRequired,
-  clearEverything: PropTypes.func.isRequired,
-};
 
 export default Keyboard;

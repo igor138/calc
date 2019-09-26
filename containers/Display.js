@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import Digit from '../components/Digit';
 import ServiceSymbols from '../components/ServiceSymbols';
@@ -13,7 +13,13 @@ const style = StyleSheet.create({
   },
 });
 
-const Display = ({ displayValue, minus, error }) => {
+type Props = {
+  displayValue: string,
+  minus: bool,
+  error: bool,
+};
+
+const Display = ({ displayValue, minus, error }: Props) => {
   const justDigits = displayValue.replace('.', '');
   const dotPosition = displayValue.indexOf('.');
   const length = justDigits.length;
@@ -34,12 +40,6 @@ const Display = ({ displayValue, minus, error }) => {
       {digits}
     </View>
   );
-};
-
-Display.propTypes = {
-  displayValue: PropTypes.string.isRequired,
-  minus: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
 };
 
 export default Display;

@@ -1,6 +1,11 @@
+// @flow
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
+
+type Props = {
+  digit: string,
+  dot: bool,
+};
 
 const style = StyleSheet.create({
   digit: {
@@ -14,7 +19,7 @@ const style = StyleSheet.create({
   },
 });
 
-const Digit = ({ digit, dot }) => (
+const Digit = ({ digit, dot }: Props) => (
   <View style={style.digit}>
     <Text style={style.text}>
       {digit}
@@ -22,10 +27,5 @@ const Digit = ({ digit, dot }) => (
     {dot && <Text style={style.text}>.</Text>}
   </View>
 );
-
-Digit.propTypes = {
-  digit: PropTypes.string,
-  dot: PropTypes.bool,
-};
 
 export default Digit;

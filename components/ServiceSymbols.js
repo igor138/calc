@@ -1,6 +1,6 @@
+// @flow
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   container: {
@@ -20,7 +20,12 @@ const style = StyleSheet.create({
   },
 });
 
-const ServiceSymbols = ({ minus, error }) => (
+type Props = {
+  minus: bool,
+  error: bool,
+};
+
+const ServiceSymbols = ({ minus, error }: Props) => (
   <View style={style.container}>
     <Text style={style.minus}>
       {minus && '-'}
@@ -30,10 +35,5 @@ const ServiceSymbols = ({ minus, error }) => (
     </Text>
   </View>
 );
-
-ServiceSymbols.propTypes = {
-  minus: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-};
 
 export default ServiceSymbols;
