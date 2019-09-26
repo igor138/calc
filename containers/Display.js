@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import Digit from '../components/Digit';
 import ServiceSymbols from '../components/ServiceSymbols';
 
@@ -8,8 +8,15 @@ const style = StyleSheet.create({
   display: {
     flex: 1,
     flexDirection: 'row',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
     alignItems: 'stretch',
     backgroundColor: '#aaa',
+  },
+  debugDisplay: {
+    textAlign: 'center',
   },
 });
 
@@ -35,9 +42,14 @@ const Display = ({ displayValue, minus, error }: Props) => {
     digits.unshift(<Digit key={i} digit={digit} dot={dot} />);
   }
   return (
-    <View style={style.display}>
-      <ServiceSymbols error={error} minus={minus} />
-      {digits}
+    <View style={style.container}>
+      <Text style={style.debugDisplay}>
+        {displayValue}
+      </Text>
+      <View style={style.display}>
+        <ServiceSymbols error={error} minus={minus} />
+        {digits}
+      </View>
     </View>
   );
 };
