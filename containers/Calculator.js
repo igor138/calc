@@ -23,20 +23,19 @@ class Calculator extends Component {
     };
   }
 
-  LIMIT = 8;
-
   formatDisplayedValue = displayValue => {
+    const maxDigits = 8;
     const dotPosition = displayValue.indexOf('.');
 
     if (dotPosition === -1) {
-      if (displayValue.length > 8) {
+      if (displayValue.length > maxDigits) {
         return null;
       }
       return displayValue;
-    } else if (dotPosition > 8) {
+    } else if (dotPosition > maxDigits) {
       return null;
-    } else if (displayValue.length > 9) {
-      return displayValue.slice(0, 9);
+    } else if (displayValue.length > maxDigits + 1) {
+      return displayValue.slice(0, maxDigits + 1);
     }
     return displayValue;
   }
