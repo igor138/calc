@@ -1,3 +1,5 @@
+// @flow
+
 import {
   ADD_DIGIT,
   REMOVE_DIGIT,
@@ -7,6 +9,10 @@ import {
   SET_OPERATOR,
   CALCULATE,
   SET_ERROR,
+  ADDITION,
+  SUBTRACTION,
+  MULTIPLICATION,
+  DIVISION,
 } from './constants';
 import {
   formatDisplayedValue,
@@ -28,7 +34,16 @@ const emptyDisplay = {
   dotIsSet: false,
 };
 
-const reducer = (state = initialState, action) => {
+type State = {
+  displayValue: string,
+  minus: bool,
+  dotIsSet: bool,
+  operator: ?string,
+  result: number,
+  error: bool,
+};
+
+const reducer = (state :State = initialState, action :{type :string, payload :any}) :State => {
   switch (action.type) {
     case ADD_DIGIT: {
       let { displayValue, dotIsSet } = state;
@@ -114,19 +129,19 @@ const reducer = (state = initialState, action) => {
       const arg = getValueFromDisplay(state);
 
       switch (operator) {
-        case 'ADDITION': {
+        case ADDITION: {
           result += arg;
           break;
         }
-        case 'SUBTRACTION': {
+        case SUBTRACTION: {
           result -= arg;
           break;
         }
-        case 'MULTIPLICATION': {
+        case MULTIPLICATION: {
           result *= arg;
           break;
         }
-        case 'DIVISION': {
+        case DIVISION: {
           if (!arg) {
             return {
               ...state,

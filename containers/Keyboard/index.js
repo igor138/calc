@@ -3,6 +3,12 @@ import React from 'react';
 import { View } from 'react-native';
 import Button from './components/Button';
 import s from './styles';
+import {
+  ADDITION,
+  SUBTRACTION,
+  MULTIPLICATION,
+  DIVISION,
+} from '../Calculator/constants';
 
 type Props = {
   addDigit: (digit :string) => void,
@@ -38,10 +44,10 @@ const Keyboard = ({ addDigit, invertSign, clear, removeDigit, calculate, setOper
       <Button label="+/-" clickHandler={invertSign} />
     </View>
     <View style={s.column}>
-      <Button label="/" clickHandler={() => setOperator('DIVISION')} />
-      <Button label="x" clickHandler={() => setOperator('MULTIPLICATION')} />
-      <Button label="-" clickHandler={() => setOperator('SUBTRACTION')} />
-      <Button label="+" clickHandler={() => setOperator('ADDITION')} />
+      <Button label="/" clickHandler={() => setOperator(DIVISION)} />
+      <Button label="x" clickHandler={() => setOperator(MULTIPLICATION)} />
+      <Button label="-" clickHandler={() => setOperator(SUBTRACTION)} />
+      <Button label="+" clickHandler={() => setOperator(ADDITION)} />
       <Button label="=" clickHandler={calculate} />
     </View>
   </View>
