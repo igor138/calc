@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { View, Text } from 'react-native';
-import Digit from '../../components/Digit';
-import ServiceSymbols from '../../components/ServiceSymbols';
+import Digit from './components/Digit';
+import ServiceSymbols from './components/ServiceSymbols';
 import s from './styles';
 
 type Props = {
