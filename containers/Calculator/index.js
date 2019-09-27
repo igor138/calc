@@ -1,15 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import Keyboard from './Keyboard';
-import Display from './Display';
-
-const style = StyleSheet.create({
-  calculator: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-});
+import { View } from 'react-native';
+import Keyboard from '../Keyboard';
+import Display from '../Display';
+import s from './styles';
 
 type Props = {};
 
@@ -35,7 +29,7 @@ class Calculator extends Component <Props, State> {
     };
   }
 
-  formatDisplayedValue = (displayValue: string) => {
+  formatDisplayedValue = (displayValue: string) :?string => {
     const maxDigits = 8;
     const dotPosition = displayValue.indexOf('.');
 
@@ -52,7 +46,7 @@ class Calculator extends Component <Props, State> {
     return displayValue;
   }
 
-  addDigit = (digit: string): ?string => {
+  addDigit = (digit: string) => {
     let { displayValue, dotIsSet } = this.state;
 
     if (digit === '.') {
@@ -174,7 +168,7 @@ class Calculator extends Component <Props, State> {
   render() {
     const { displayValue, minus, error } = this.state;
     return (
-      <View style={style.calculator}>
+      <View style={s.calculator}>
         <Display displayValue={displayValue} minus={minus} error={error} />
         <Keyboard
           addDigit={this.addDigit}
