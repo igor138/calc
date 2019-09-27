@@ -1,3 +1,5 @@
+// @flow
+
 import {
   ADD_DIGIT,
   REMOVE_DIGIT,
@@ -9,7 +11,7 @@ import {
   SET_ERROR,
 } from './constants';
 
-export const addDigit = digit => ({
+export const addDigit = (digit :string) => ({
   type: ADD_DIGIT,
   payload: digit,
 });
@@ -30,7 +32,7 @@ export const clearEverything = () => ({
   type: CLEAR_EVERYTHING,
 });
 
-export const setOperator = operator => ({
+export const setOperator = (operator :string) => ({
   type: SET_OPERATOR,
   payload: operator,
 });

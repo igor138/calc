@@ -20,7 +20,15 @@ type Props = {
   clearEverything: () => void,
 };
 
-const Keyboard = ({ addDigit, invertSign, clear, removeDigit, calculate, setOperator, clearEverything }: Props) => (
+const Keyboard = ({
+  addDigit,
+  invertSign,
+  clear,
+  removeDigit,
+  calculate,
+  setOperator,
+  clearEverything,
+}: Props) => (
   <View style={s.keyboard}>
     <View style={s.column}>
       <Button label="C" clickHandler={clear} />
