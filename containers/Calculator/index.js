@@ -21,6 +21,7 @@ import {
   selectError,
   selectResult,
 } from './selectors';
+import type State from './reducers';
 
 type Props = {
   displayValue: string,
@@ -68,7 +69,14 @@ const Calculator = ({
   </View>
 );
 
-const mapStateToProps = state => ({
+type StateToProps = {
+  displayValue: (state: State) => string,
+  minus: (state: State) => string,
+  error: (state: State) => string,
+  result: (state: State) => number,
+};
+
+const mapStateToProps = (state: State): StateToProps => ({
   displayValue: selectDisplayValue(state),
   minus: selectMinus(state),
   error: selectError(state),

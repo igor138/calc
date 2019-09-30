@@ -34,7 +34,7 @@ const emptyDisplay = {
   dotIsSet: false,
 };
 
-type State = {
+export type State = {
   displayValue: string,
   minus: bool,
   dotIsSet: bool,
