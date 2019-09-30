@@ -1,6 +1,6 @@
 // @flow
 
-export const formatDisplayedValue = (displayValue: string) :?string => {
+export const formatDisplayedValue = (displayValue: string): ?string => {
   const maxDigits = 8;
   const dotPosition = displayValue.indexOf('.');
 
@@ -17,7 +17,7 @@ export const formatDisplayedValue = (displayValue: string) :?string => {
   return displayValue;
 };
 
-export const getValueFromDisplay = (state :{displayValue :string, minus :bool}) :number => {
+export const getValueFromDisplay = (state: {displayValue: string, minus: bool}): number => {
   const { displayValue, minus } = state;
   return parseFloat(displayValue) * (minus ? -1 : 1);
 };

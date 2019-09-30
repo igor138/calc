@@ -2,30 +2,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { View } from 'react-native';
 import Keyboard from '../Keyboard';
 import Display from '../Display';
 import s from './styles';
-import * as actions from './actions';
-
-type Props = {
-  displayValue: string,
-  minus: bool,
-  error: bool,
-  addDigit: (digit: string) => void,
-  removeDigit: () => void,
-  invertSign: () => void,
-  clear: () => void,
-  setOperator: (operator: string) => void,
-  calculate: () => void,
-  clearEverything: () => void,
-};
-
-const Calculator = ({
-  displayValue,
-  minus,
-  error,
+import {
   addDigit,
   removeDigit,
   invertSign,
@@ -33,26 +14,75 @@ const Calculator = ({
   setOperator,
   calculate,
   clearEverything,
+} from './actions';
+import {
+  selectDisplayValue,
+  selectMinus,
+  selectError,
+  selectResult,
+} from './selectors';
+
+type Props = {
+  displayValue: string,
+  minus: bool,
+  error: bool,
+  result: string,
+  handleAddDigit: (digit: string) => void,
+  handleRemoveDigit: () => void,
+  handleInvertSign: () => void,
+  handleClear: () => void,
+  handleSetOperator: (operator: string) => void,
+  handleCalculate: () => void,
+  handleClearEverything: () => void,
+};
+
+const Calculator = ({
+  displayValue,
+  minus,
+  error,
+  result,
+  handleAddDigit,
+  handleRemoveDigit,
+  handleInvertSign,
+  handleClear,
+  handleSetOperator,
+  handleCalculate,
+  handleClearEverything,
 }: Props) => (
   <View style={s.calculator}>
     <Display
       displayValue={displayValue}
       minus={minus}
       error={error}
+      result={result}
     />
     <Keyboard
-      addDigit={addDigit}
-      removeDigit={removeDigit}
-      invertSign={invertSign}
-      clear={clear}
-      setOperator={setOperator}
-      calculate={calculate}
-      clearEverything={clearEverything}
+      handleAddDigit={handleAddDigit}
+      handleRemoveDigit={handleRemoveDigit}
+      handleInvertSign={handleInvertSign}
+      handleClear={handleClear}
+      handleSetOperator={handleSetOperator}
+      handleCalculate={handleCalculate}
+      handleClearEverything={handleClearEverything}
     />
   </View>
 );
 
-const mapStateToProps = state => state;
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapStateToProps = state => ({
+  displayValue: selectDisplayValue(state),
+  minus: selectMinus(state),
+  error: selectError(state),
+  result: selectResult(state),
+});
+
+const mapDispatchToProps = {
+  handleAddDigit: addDigit,
+  handleRemoveDigit: removeDigit,
+  handleInvertSign: invertSign,
+  handleClear: clear,
+  handleSetOperator: setOperator,
+  handleCalculate: calculate,
+  handleClearEverything: clearEverything,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator);

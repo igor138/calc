@@ -11,7 +11,7 @@ import {
   SET_ERROR,
 } from './constants';
 
-export const addDigit = (digit :string) => ({
+export const addDigit = (digit: string) => ({
   type: ADD_DIGIT,
   payload: digit,
 });
@@ -32,7 +32,7 @@ export const clearEverything = () => ({
   type: CLEAR_EVERYTHING,
 });
 
-export const setOperator = (operator :string) => ({
+export const setOperator = (operator: string) => ({
   type: SET_OPERATOR,
   payload: operator,
 });

@@ -17,7 +17,7 @@ import {
 import {
   formatDisplayedValue,
   getValueFromDisplay,
-} from './services';
+} from './utils';
 
 export const initialState = {
   displayValue: '0',
@@ -43,7 +43,7 @@ type State = {
   error: bool,
 };
 
-const reducer = (state :State = initialState, action :{type :string, payload :any}) :State => {
+const reducer = (state: State = initialState, action: {type: string, payload: any}): State => {
   switch (action.type) {
     case ADD_DIGIT: {
       let { displayValue, dotIsSet } = state;

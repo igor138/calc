@@ -11,7 +11,17 @@ export default StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: '#aaa',
   },
+  debugContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    backgroundColor: '#aaa',
+  },
+  debugTopMargin: {
+    flex: 1,
+  },
   debugDisplay: {
-    textAlign: 'center',
+    textAlign: 'right',
+    flex: 1,
   },
 });

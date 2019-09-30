@@ -9,9 +9,10 @@ type Props = {
   displayValue: string,
   minus: bool,
   error: bool,
+  result: string,
 };
 
-const Display = ({ displayValue, minus, error }: Props) => {
+const Display = ({ displayValue, minus, error, result }: Props) => {
   const justDigits = displayValue.replace('.', '');
   const dotPosition = displayValue.indexOf('.');
   const length = justDigits.length;
@@ -28,9 +29,12 @@ const Display = ({ displayValue, minus, error }: Props) => {
   }
   return (
     <View style={s.container}>
-      <Text style={s.debugDisplay}>
-        {displayValue}
-      </Text>
+      <View style={s.debugContainer}>
+        <View style={s.debugTopMargin} />
+        <Text style={s.debugDisplay}>
+          {result}{'  '}
+        </Text>
+      </View>
       <View style={s.display}>
         <ServiceSymbols error={error} minus={minus} />
         {digits}

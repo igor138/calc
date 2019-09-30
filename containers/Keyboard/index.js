@@ -11,52 +11,52 @@ import {
 } from '../Calculator/constants';
 
 type Props = {
-  addDigit: (digit :string) => void,
-  invertSign: () => void,
-  clear: () => void,
-  removeDigit: () => void,
-  calculate: () => void,
-  setOperator: (operator :string) => void,
-  clearEverything: () => void,
+  handleAddDigit: (digit: string) => void,
+  handleInvertSign: () => void,
+  handleClear: () => void,
+  handleRemoveDigit: () => void,
+  handleCalculate: () => void,
+  handleSetOperator: (operator: string) => void,
+  handleClearEverything: () => void,
 };
 
 const Keyboard = ({
-  addDigit,
-  invertSign,
-  clear,
-  removeDigit,
-  calculate,
-  setOperator,
-  clearEverything,
+  handleAddDigit,
+  handleInvertSign,
+  handleClear,
+  handleRemoveDigit,
+  handleCalculate,
+  handleSetOperator,
+  handleClearEverything,
 }: Props) => (
   <View style={s.keyboard}>
     <View style={s.column}>
-      <Button label="C" clickHandler={clear} />
-      <Button label="7" clickHandler={() => addDigit('7')} />
-      <Button label="4" clickHandler={() => addDigit('4')} />
-      <Button label="1" clickHandler={() => addDigit('1')} />
-      <Button label="0" clickHandler={() => addDigit('0')} />
+      <Button label="C" clickHandler={handleClear} />
+      <Button label="7" clickHandler={() => handleAddDigit('7')} />
+      <Button label="4" clickHandler={() => handleAddDigit('4')} />
+      <Button label="1" clickHandler={() => handleAddDigit('1')} />
+      <Button label="0" clickHandler={() => handleAddDigit('0')} />
     </View>
     <View style={s.column}>
-      <Button label="<" clickHandler={removeDigit} />
-      <Button label="8" clickHandler={() => addDigit('8')} />
-      <Button label="5" clickHandler={() => addDigit('5')} />
-      <Button label="2" clickHandler={() => addDigit('2')} />
-      <Button label="." clickHandler={() => addDigit('.')} />
+      <Button label="<" clickHandler={handleRemoveDigit} />
+      <Button label="8" clickHandler={() => handleAddDigit('8')} />
+      <Button label="5" clickHandler={() => handleAddDigit('5')} />
+      <Button label="2" clickHandler={() => handleAddDigit('2')} />
+      <Button label="." clickHandler={() => handleAddDigit('.')} />
     </View>
     <View style={s.column}>
-      <Button label="CE" clickHandler={clearEverything} />
-      <Button label="9" clickHandler={() => addDigit('9')} />
-      <Button label="6" clickHandler={() => addDigit('6')} />
-      <Button label="3" clickHandler={() => addDigit('3')} />
-      <Button label="+/-" clickHandler={invertSign} />
+      <Button label="CE" clickHandler={handleClearEverything} />
+      <Button label="9" clickHandler={() => handleAddDigit('9')} />
+      <Button label="6" clickHandler={() => handleAddDigit('6')} />
+      <Button label="3" clickHandler={() => handleAddDigit('3')} />
+      <Button label="+/-" clickHandler={handleInvertSign} />
     </View>
     <View style={s.column}>
-      <Button label="/" clickHandler={() => setOperator(DIVISION)} />
-      <Button label="x" clickHandler={() => setOperator(MULTIPLICATION)} />
-      <Button label="-" clickHandler={() => setOperator(SUBTRACTION)} />
-      <Button label="+" clickHandler={() => setOperator(ADDITION)} />
-      <Button label="=" clickHandler={calculate} />
+      <Button label="/" clickHandler={() => handleSetOperator(DIVISION)} />
+      <Button label="x" clickHandler={() => handleSetOperator(MULTIPLICATION)} />
+      <Button label="-" clickHandler={() => handleSetOperator(SUBTRACTION)} />
+      <Button label="+" clickHandler={() => handleSetOperator(ADDITION)} />
+      <Button label="=" clickHandler={handleCalculate} />
     </View>
   </View>
 );
