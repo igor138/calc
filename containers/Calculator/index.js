@@ -28,13 +28,13 @@ type Props = {
   minus: bool,
   error: bool,
   result: string,
-  handleAddDigit: (digit: string) => void,
-  handleRemoveDigit: () => void,
-  handleInvertSign: () => void,
-  handleClear: () => void,
-  handleSetOperator: (operator: string) => void,
-  handleCalculate: () => void,
-  handleClearEverything: () => void,
+  onAddDigit: (digit: string) => void,
+  onRemoveDigit: () => void,
+  onInvertSign: () => void,
+  onClear: () => void,
+  onSetOperator: (operator: string) => void,
+  onCalculate: () => void,
+  onClearEverything: () => void,
 };
 
 const Calculator = ({
@@ -42,13 +42,13 @@ const Calculator = ({
   minus,
   error,
   result,
-  handleAddDigit,
-  handleRemoveDigit,
-  handleInvertSign,
-  handleClear,
-  handleSetOperator,
-  handleCalculate,
-  handleClearEverything,
+  onAddDigit,
+  onRemoveDigit,
+  onInvertSign,
+  onClear,
+  onSetOperator,
+  onCalculate,
+  onClearEverything,
 }: Props) => (
   <View style={s.calculator}>
     <Display
@@ -58,13 +58,13 @@ const Calculator = ({
       result={result}
     />
     <Keyboard
-      handleAddDigit={handleAddDigit}
-      handleRemoveDigit={handleRemoveDigit}
-      handleInvertSign={handleInvertSign}
-      handleClear={handleClear}
-      handleSetOperator={handleSetOperator}
-      handleCalculate={handleCalculate}
-      handleClearEverything={handleClearEverything}
+      onAddDigit={onAddDigit}
+      onRemoveDigit={onRemoveDigit}
+      onInvertSign={onInvertSign}
+      onClear={onClear}
+      onSetOperator={onSetOperator}
+      onCalculate={onCalculate}
+      onClearEverything={onClearEverything}
     />
   </View>
 );
@@ -84,13 +84,13 @@ const mapStateToProps = (state: State): StateToProps => ({
 });
 
 const mapDispatchToProps = {
-  handleAddDigit: addDigit,
-  handleRemoveDigit: removeDigit,
-  handleInvertSign: invertSign,
-  handleClear: clear,
-  handleSetOperator: setOperator,
-  handleCalculate: calculate,
-  handleClearEverything: clearEverything,
+  onAddDigit: addDigit,
+  onRemoveDigit: removeDigit,
+  onInvertSign: invertSign,
+  onClear: clear,
+  onSetOperator: setOperator,
+  onCalculate: calculate,
+  onClearEverything: clearEverything,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator);
