@@ -9,8 +9,7 @@ import {
   SUBTRACTION,
   MULTIPLICATION,
   DIVISION,
-} from '../Calculator/constants';
-
+} from './constants';
 import {
   addDigit,
   removeDigit,

@@ -11,7 +11,7 @@ import {
   selectError,
   selectResult,
 } from './selectors';
-import type State from '../Keyboard/reducers';
+import type { State } from '../Keyboard/reducers';
 
 type Props = {
   displayValue: string,
@@ -51,14 +51,7 @@ const Display = ({ displayValue, minus, error, result }: Props) => {
   );
 };
 
-type StateToProps = {
-  displayValue: (state: State) => string,
-  minus: (state: State) => string,
-  error: (state: State) => string,
-  result: (state: State) => number,
-};
-
-const mapStateToProps = (state: State): StateToProps => ({
+const mapStateToProps = (state: State): Object => ({
   displayValue: selectDisplayValue(state),
   minus: selectMinus(state),
   error: selectError(state),
