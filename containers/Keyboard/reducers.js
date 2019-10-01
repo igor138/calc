@@ -17,7 +17,7 @@ import {
 import {
   formatDisplayedValue,
   getValueFromDisplay,
-} from './utils';
+} from '../../utils/calculatorUtils';
 
 export const initialState = {
   displayValue: '0',

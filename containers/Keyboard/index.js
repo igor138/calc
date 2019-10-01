@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Button from './components/Button';
 import s from './styles';
@@ -9,6 +10,16 @@ import {
   MULTIPLICATION,
   DIVISION,
 } from '../Calculator/constants';
+
+import {
+  addDigit,
+  removeDigit,
+  invertSign,
+  clear,
+  setOperator,
+  calculate,
+  clearEverything,
+} from './actions';
 
 type Props = {
   onAddDigit: (digit: string) => void,
@@ -61,4 +72,14 @@ const Keyboard = ({
   </View>
 );
 
-export default Keyboard;
+const mapDispatchToProps = {
+  onAddDigit: addDigit,
+  onRemoveDigit: removeDigit,
+  onInvertSign: invertSign,
+  onClear: clear,
+  onSetOperator: setOperator,
+  onCalculate: calculate,
+  onClearEverything: clearEverything,
+};
+
+export default connect(null, mapDispatchToProps)(Keyboard);

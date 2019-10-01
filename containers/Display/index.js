@@ -1,9 +1,17 @@
 // @flow
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import Digit from './components/Digit';
 import ServiceSymbols from './components/ServiceSymbols';
 import s from './styles';
+import {
+  selectDisplayValue,
+  selectMinus,
+  selectError,
+  selectResult,
+} from './selectors';
+import type State from '../Keyboard/reducers';
 
 type Props = {
   displayValue: string,
@@ -43,4 +51,17 @@ const Display = ({ displayValue, minus, error, result }: Props) => {
   );
 };
 
-export default Display;
+type StateToProps = {
+  displayValue: (state: State) => string,
+  minus: (state: State) => string,
+  error: (state: State) => string,
+  result: (state: State) => number,
+};
+
+const mapStateToProps = (state: State): StateToProps => ({
+  displayValue: selectDisplayValue(state),
+  minus: selectMinus(state),
+  error: selectError(state),
+  result: selectResult(state),
+});
+export default connect(mapStateToProps)(Display);
